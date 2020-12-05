@@ -57,8 +57,19 @@ export default {
     },
     login () {
       // 登录表单预验证
-      this.$refs.loginFormRef.validate((valid) => {
-        console.log(valid)
+      this.$refs.loginFormRef.validate(async (valid) => {
+        // 验证未通过
+        if (!valid) return
+
+        // 验证通过
+        // 使用await和async关键字简化promise操作
+        // 从axios封装好的属性中获取data属性
+        const { data: res } = await this.$http.post('login', this.loginForm)
+
+        // 登录状态码!=200 登录失败
+        if (res.meta.status !== 200) return console.log('登录失败')
+        // 登录状态码==200 登录成功
+        console.log('登录成功')
       })
     }
   }
