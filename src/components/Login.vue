@@ -31,8 +31,8 @@ export default {
     return {
       // 登录表单数据对象
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
 
       // 登录表单验证规则对象
@@ -67,9 +67,9 @@ export default {
         const { data: res } = await this.$http.post('login', this.loginForm)
 
         // 登录状态码!=200 登录失败
-        if (res.meta.status !== 200) return console.log('登录失败')
+        if (res.meta.status !== 200) return this.$message.error('登录失败')
         // 登录状态码==200 登录成功
-        console.log('登录成功')
+        this.$message.success('登录成功')
       })
     }
   }
