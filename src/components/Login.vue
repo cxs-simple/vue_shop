@@ -55,6 +55,8 @@ export default {
     resetLoginForm () {
       this.$refs.loginFormRef.resetFields()
     },
+
+    // 登录
     login () {
       // 登录表单预验证
       this.$refs.loginFormRef.validate(async (valid) => {
